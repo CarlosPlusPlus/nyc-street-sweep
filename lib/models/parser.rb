@@ -3,7 +3,7 @@ require 'pp'
 
 class Parser
 
-DB = SQLite3::Database.open("../streetsweep.db")
+DB = SQLite3::Database.open("../source/streetsweep.db")
 
 ALTSIDE = DB.execute("SELECT * FROM altside")
 
