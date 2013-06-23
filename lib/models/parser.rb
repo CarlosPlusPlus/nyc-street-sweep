@@ -1,18 +1,19 @@
 require 'sqlite3'
+require 'timeliness'
 require 'pp'
 
 class Parser
 
   DB = SQLite3::Database.open("../source/streetsweep.db")
+  # ALTSIDE = DB.execute("SELECT * FROM altside") #IS THIS NECESSARY?
 
-  ALTSIDE = DB.execute("SELECT * FROM altside")
-
-  def self.parse #Need to pass this an index to parse, so we don't have to parse all regulations
+  def parse(ord_num)
     trunc = []
-    string = ""
     
-    ALTSIDE.each do |x|
-      string = x[2].gsub("F RI", "FRI")
+    regulation = DB.execute("SELECT SignDescription FROM altside WHERE StatusOrderNumber = ?", ord_num).flatten 
+
+    regulation.each do |x|
+      string = x.gsub("F RI", "FRI")
       string = string.gsub("8AM 11AM", "8AM-11AM")
       string = string.gsub(/ TO( |-)/, "-")
       string = string.gsub(/ & | &|& |&/, " ")
@@ -33,23 +34,44 @@ class Parser
       
       trunc << string
     end
-    trunc
+
+    if trunc.uniq.size == 1
+      trunc.uniq.first
+    else
+      puts "ERROR: THERE ARE MORE THAN ONE NON-UNIQUE REGUALATIONS FOR THIS ORD NUM"
+    end
   end
 
-  def self.days_of_week(string) #Need to feed this a selected string from parse method
+  def days_of_week(reg_string) #Need to feed this a selected string from parse method
     week = ["MO", "TU", "WE", "TH", "FR", "SA", "SU"]
     reg_days_of_week = ["", "", "", "", "", "", ""]
     counter = 0
-    
+
     week.each do |x|
-      reg_days_of_week[counter] = x if string.include?(x)
+      reg_days_of_week[counter] = x if reg_string.include?(x)
       counter += 1
     end
     
     reg_days_of_week
   end
+
+  def start_end_times(reg_string) #IS HAVING TROUBLE INTERPRETING TIME WITH NO AM/PM
+    time_array = reg_string.split(" ").first.split("-")
+    pp time_array
+    
+    start_time = Timeliness.parse(time_array[0], :time)
+    end_time = Timeliness.parse(time_array[1], :time)
+  end
+
+  def run_parsing
+    puts "Please enter an ordinance number:"
+    input = gets.chomp
+
+    string = self.parse(input)
+    pp self.days_of_week(string)
+    pp self.start_end_times(string)
+  end
 end
 
-string = Parser.parse
-# pp string
-pp Parser.days_of_week(string)
+instance = Parser.new
+instance.run_parsing
