@@ -37,8 +37,10 @@ class Parser
 
     if trunc.uniq.size == 1
       trunc.uniq.first
-    else
+    elsif trunc.uniq.size > 1
       puts "ERROR: THERE ARE MORE THAN ONE NON-UNIQUE REGUALATIONS FOR THIS ORD NUM"
+    else
+      puts "ERROR: PLEASE ENTER A CORRECT ADDRESS/ORD NUMBER"
     end
   end
 
@@ -55,15 +57,18 @@ class Parser
     reg_days_of_week
   end
 
-  def start_end_times(reg_string) #IS HAVING TROUBLE INTERPRETING TIME WITH NO AM/PM
+  def start_end_times(reg_string) #PROBLEM IF NO AM/PM EXISTS IN START TIME AND END TIME HAS DIFFERENT AM/PM
     time_array = reg_string.split(" ").first.split("-")
     pp time_array
     
+    time_array[0] += time_array[1][-2,2] if !time_array[0].include?("AM" || "PM")
+    pp time_array
+
     start_time = Timeliness.parse(time_array[0], :time)
     end_time = Timeliness.parse(time_array[1], :time)
   end
 
-  def run_parsing
+  def run_parsing #WILL HAVE TO CHANGE THIS TO CORRELATE ADDRESS WITH ORD NUM
     puts "Please enter an ordinance number:"
     input = gets.chomp
 
