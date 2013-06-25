@@ -7,7 +7,6 @@ module NycStreetSweep
 
     # View setup for base index page.
     get '/' do
-      
       @main = "Default - Main St"
       @from = "Default - From St"
       @to   = "Default - To St"
@@ -18,8 +17,8 @@ module NycStreetSweep
       erb :form_test
     end
 
+    # Route for form submission.
     post '/' do
-
       @main = params[:main_st]
       @from = params[:from_st]
       @to   = params[:to_st]
@@ -39,6 +38,11 @@ module NycStreetSweep
       @regulation_str = "POSTED SOURCE"
 
       erb :form_test
+    end
+
+    # Route for index.erb updates.
+    get '/index' do
+      erb :index
     end
 
   end
