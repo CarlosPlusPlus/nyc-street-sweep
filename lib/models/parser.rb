@@ -4,7 +4,7 @@ require 'pp'
 
 class Parser
 
-  DB = SQLite3::Database.open("../source/streetsweep.db")
+  DB = SQLite3::Database.open("./source/streetsweep.db")
   # ALTSIDE = DB.execute("SELECT * FROM altside") #IS THIS NECESSARY?
 
   def parse(ord_num)
@@ -66,6 +66,9 @@ class Parser
 
     start_time = Timeliness.parse(time_array[0], :time)
     end_time = Timeliness.parse(time_array[1], :time)
+
+    #return start_time, end_time
+    #return [start_time, end_time]
   end
 
   def run_parsing #WILL HAVE TO CHANGE THIS TO CORRELATE ADDRESS WITH ORD NUM
@@ -77,6 +80,3 @@ class Parser
     pp self.start_end_times(string)
   end
 end
-
-instance = Parser.new
-instance.run_parsing
