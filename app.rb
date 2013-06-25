@@ -1,4 +1,4 @@
-# Require environment.rb 
+require_relative 'environment'
 
 require 'sinatra/base'
 
