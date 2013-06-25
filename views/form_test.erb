@@ -6,17 +6,22 @@
   
   <body>
     
-    <form name="submit" action="/" method="post">
+    <form action="/" method="POST">
       <select>
         <option value = "Manhattan">Manhattan</option>
-      </select><br><br>
-      Main Street:    <input type="text" name="main_st">  <br><br>
-      From Street:    <input type="text" name="from_st">  <br><br>
-      To Street:      <input type="text" name="to_st">    <br><br>
-      Side of Street: <input type="text" name="side_st">  <br><br><br>
+      </select>
+      <br><br>
+      Main Street:    <input type="text" name="main_st" value="<%=@main%>">  <br><br>
+      From Street:    <input type="text" name="from_st" value="<%=@from%>">  <br><br>
+      To Street:      <input type="text" name="to_st" value="<%=@to%>">    <br><br>
+      Side of Street: <input type="text" name="side_st" value="<%=@side%>">  <br><br><br>
       
       <input type="submit" value="Submit">
   </form>
+
+  <br><br>
+
+  <div>Regulation String: <%=@regulation_str%>.</div>
 
   </body>
 
