@@ -5,16 +5,17 @@ require 'sinatra/base'
 module NycStreetSweep
   class App < Sinatra::Base
 
-    # View setup for base index page.
     get '/' do
-      @main = "Default - Main St"
-      @from = "Default - From St"
-      @to   = "Default - To St"
-      @side = "Default - Side St"
+      @main  = "Default - Main St"
+      @from  = "Default - From St"
+      @to    = "Default - To St"
+      @side  = "Default - Side St"
+      @text  = "Default - Text"
+      @tweet = "Default - Tweet"
 
       @regulation_str = "Your regulation will go HERE"
       
-      erb :form_test
+      erb :index
     end
 
     # Route for form submission.
@@ -36,12 +37,22 @@ module NycStreetSweep
       Text.send(@text,msg)
       Tweet.send(@tweet,msg)
 
-      erb :form_test
+      erb :index
     end
 
     # Route for index.erb updates.
-    get '/index' do
-      erb :index
+    get '/test' do
+
+      @main  = "Default - Main St"
+      @from  = "Default - From St"
+      @to    = "Default - To St"
+      @side  = "Default - Side St"
+      @text  = "Default - Text"
+      @tweet = "Default - Tweet"
+
+      @regulation_str = "Your regulation will go HERE"
+
+      erb :test
     end
 
   end
