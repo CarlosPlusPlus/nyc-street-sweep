@@ -1,0 +1,7 @@
+source 'http://rubygems.org'
+gem 'simple_geocoder'
+gem 'sqlite3'
+gem 'sinatra'
+gem 'timeliness'
+gem 'twitter'
+gem 'twilio-ruby'
