@@ -27,7 +27,7 @@ module NycStreetSweep
       # Determine regulation based on template values.
       parse_values = Parser.run_parsing(@main,@from,@to,@side)
 
-      @regulation_str = "Street cleaning takes place between #{parse_values[0][0]} and #{parse_values[0][1]}\non #{parse_values[1]}"
+      @regulation_str = "Street cleaning takes place between #{parse_values[0][0].strftime("%k:%M%p")} and #{parse_values[0][1].strftime("%k:%M%p")}\non #{parse_values[1]}"
 
       erb :form_test
     end

@@ -64,7 +64,7 @@ class Parser
     
     time_array[0] += time_array[1][-2,2] if !time_array[0].include?("AM" || "PM")
 
-    start_time = Timeliness.parse(time_array[0], :time) 
+    start_time = Timeliness.parse(time_array[0], :time)
     end_time   = Timeliness.parse(time_array[1], :time)
 
     [start_time, end_time]
@@ -75,6 +75,8 @@ class Parser
     ord_num = DB.execute("SELECT StatusOrderNumber FROM streetsegment WHERE MainStreet = ? AND FromStreet = ? AND ToStreet = ? AND SideOfStreet = ?", [main_street, from_street, to_street, side_of_street]).flatten.first
 
     regulation = self.parse(ord_num)
+    # puts regulation
+    # puts regulation.class
 
     [self.start_end_times(regulation),self.days_of_week(regulation)]    
   end
