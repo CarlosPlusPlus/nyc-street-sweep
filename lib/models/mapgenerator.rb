@@ -12,7 +12,7 @@ class MapGenerator
     [map_hash["lat"], map_hash["lng"]]    
   end
 
-  def self.generate_js(map_gen,main_st="",from_st="",side_st="")
+  def self.generate_js(map_gen,main_st="",from_st="",to_st="")
     # Generate a static map for original index
     if map_gen == false
       return <<-map_str
@@ -34,7 +34,43 @@ class MapGenerator
 
     # Calculate and highlight block based on addresses.
     else
-      puts "I'll GET HERE EVENTUALLY."
+      xy1 = location_lat_lng("#{main_st} & #{from_st}, NYC")
+      xy2 = location_lat_lng("#{main_st} & #{to_st}, NYC")
+
+      return <<-map_str
+       var map;
+
+       var intersection_1 = new google.maps.LatLng(#{xy1[0]}, #{xy1[1]});
+       var intersection_2 = new google.maps.LatLng(#{xy2[0]}, #{xy2[1]});
+
+       function initialize() {
+         var mapOptions = {
+           zoom: 16,
+           center: intersection_1,
+           mapTypeId: google.maps.MapTypeId.ROADMAP
+         };
+
+         map = new google.maps.Map(document.getElementById('map-canvas'),
+             mapOptions);
+
+         var block_parked_coords = [
+             intersection_1,
+             intersection_2
+         ];
+
+         var block_parked = new google.maps.Polyline({
+           path: block_parked_coords,
+           strokeColor: '#FF0000',
+           strokeOpacity: 0.5,
+           strokeWeight: 10
+         });
+
+         block_parked.setMap(map);
+
+       }
+
+       google.maps.event.addDomListener(window, 'load', initialize);
+      map_str
     end
 
   end
