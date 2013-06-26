@@ -5,7 +5,8 @@ require 'sinatra/base'
 module NycStreetSweep
   class App < Sinatra::Base
 
-    get '/' do
+    get '/' do      
+      # Define route instance variables.
       @main  = "Default - Main St"
       @from  = "Default - From St"
       @to    = "Default - To St"
@@ -18,8 +19,8 @@ module NycStreetSweep
       erb :index
     end
 
-    # Route for form submission.
     post '/' do
+      # Define route instance variables.
       @main  = params[:main_st]
       @from  = params[:from_st]
       @to    = params[:to_st]
