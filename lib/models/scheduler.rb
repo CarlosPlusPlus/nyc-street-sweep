@@ -3,7 +3,7 @@ require_relative 'text'
 
 class Scheduler
 
-  def self.schedule_text(asp_days, asp_times, increment, phone)
+  def self.schedule_text(asp_days, asp_times, increment, phone, message)
     daytime = DateTime.now
 
 
@@ -16,11 +16,11 @@ class Scheduler
     begin_time = asp_times.first
     schedule_time = (begin_time - (increment.to_f*60*60)).strftime("%k:%M")
 
-    Text.schedule_text(phone, schedule_date, schedule_time)
+    Text.schedule_text(phone, schedule_date, schedule_time, message)
   end
 
 
-  def self.schedule_tweet(asp_days, asp_times, increment, handle)
+  def self.schedule_tweet(asp_days, asp_times, increment, handle, message)
     daytime = DateTime.now
 
 
@@ -33,7 +33,7 @@ class Scheduler
     begin_time = asp_times.first
     schedule_time = (begin_time - (increment.to_f*60*60)).strftime("%k:%M")
 
-    Tweet.schedule_tweet(handle, schedule_date, schedule_time)
+    Tweet.schedule_tweet(handle, schedule_date, schedule_time, message)
   end
 
 end
