@@ -10,6 +10,11 @@ class Text
   @account = client.account
 
   def self.send(number, message)
+    number.strip!
+    number.gsub!('-', '')
+    number.gsub!('(', '')
+    number.gsub!(')', '')
+
     @account.sms.messages.create({:from => '17863759963',
                                   :to => "1#{number}",
                                   :body => "#{message}"})
