@@ -31,8 +31,10 @@ module NycStreetSweep
       @regulation_str = "Street cleaning takes place between #{parse_values[0][0].strftime("%k:%M%p")} and #{parse_values[0][1].strftime("%k:%M%p")}\non #{parse_values[1]}"
 
       # Text and Tweet regulation info.
-      Text.send(@text,@regulation_str)
-      Tweet.send(@tweet,@regulation_str)
+      msg = "Please move your car by #{parse_values[0][0].strftime("%k:%M%p")}! #NycStreetSweep"
+
+      Text.send(@text,msg)
+      Tweet.send(@tweet,msg)
 
       erb :form_test
     end
