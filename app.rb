@@ -6,12 +6,12 @@ module NycStreetSweep
   class App < Sinatra::Base
 
     get '/' do
-      @main  = "Default - Main St"
-      @from  = "Default - From St"
-      @to    = "Default - To St"
-      @side  = "Default - Side St"
-      @text  = "Default - Text"
-      @tweet = "Default - Tweet"
+      @main  = ""
+      @from  = ""
+      @to    = ""
+      @side  = ""
+      @text  = "optional"
+      @tweet = "optional"
 
       @regulation_str = "Your regulation will go HERE"
       
