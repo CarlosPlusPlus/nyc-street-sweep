@@ -6,7 +6,9 @@ module NycStreetSweep
   class App < Sinatra::Base
 
     get '/' do      
-      # Define route instance variables.
+      # Define all variables for template.
+      map_gen   = false
+
       @main  = "Default - Main St"
       @from  = "Default - From St"
       @to    = "Default - To St"
@@ -14,13 +16,17 @@ module NycStreetSweep
       @text  = "Default - Text"
       @tweet = "Default - Tweet"
 
+      @map_javascript = MapGenerator.generate_js(map_gen)
+
       @regulation_str = "Your regulation will go HERE"
       
       erb :index
     end
 
     post '/' do
-      # Define route instance variables.
+      map_gen   = true
+
+      # Define all variables for template.
       @main  = params[:main_st]
       @from  = params[:from_st]
       @to    = params[:to_st]
@@ -29,6 +35,7 @@ module NycStreetSweep
       @tweet = params[:tweet]
     
       # Determine regulation based on template values.
+      
       parse_values    = Parser.run_parsing(@main,@from,@to,@side)
       @regulation_str = "Street cleaning takes place between #{parse_values[0][0].strftime("%k:%M%p")} and #{parse_values[0][1].strftime("%k:%M%p")}\non #{parse_values[1]}"
 
