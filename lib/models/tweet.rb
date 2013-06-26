@@ -11,6 +11,9 @@ class Tweet
   end
 
   def self.send(handle, message)
+    handle.strip!
+    handle.gsub!('@', '')
+
     Twitter.update("@#{handle} #{message}")
   end
 
