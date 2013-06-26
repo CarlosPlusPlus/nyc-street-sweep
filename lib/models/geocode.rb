@@ -3,7 +3,7 @@ require 'simple_geocoder'
 class Geocode
 
   def self.location_data(location)
-    SimpleGeocoder::Geocoder.new.geocode("#{location}")
+    SimpleGeocoder::Geocoder.new.geocode(location)
   end
 
   def self.location_lat_lng(location)

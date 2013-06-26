@@ -16,12 +16,12 @@ class Text
   end
 
   def self.schedule_text(phone, date, time)
-    db = SQLite3::Database.open("text.db")
+    db = SQLite3::Database.open("sweep.db")
     db.execute("INSERT INTO text VALUES(?, ?, ?)",[phone, date, time])
   end
 
   def self.send_scheduled(date, time, message)
-    db = SQLite3::Database.open("text.db")
+    db = SQLite3::Database.open("sweep.db")
 
     numbers_to_text = db.execute("SELECT phone
                           FROM text
