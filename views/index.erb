@@ -38,11 +38,11 @@
           </button>
           <a class="brand" href="#">NYC Street Sweep</a>
           <div class="nav-collapse collapse">
-            <ul class="nav">
+            <!-- <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
-            </ul>
+            </ul> -->
            <!--  <form class="navbar-form pull-right">
               <input class="span2" type="text" placeholder="Email">
               <input class="span2" type="password" placeholder="Password">
@@ -58,8 +58,9 @@
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <section class="intro">
-        <h3>[NYC Street Sweep Tagline]</h3>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <h3>NYC Street Sweep</h3>
+        <p id="quote"><br><em>A real patriot is the fellow who gets a parking ticket and rejoices that the system works.</em><br>~Bill Vaughan~<br></p>
+        <p>Sounds like none of us are real patriots...</p>
        <!--  <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p> -->
       </section>
 
@@ -67,7 +68,7 @@
       <div class="row">
 
         <section class="span4">
-          <h3>Where did you park?</h3>
+          <h3 class="col_head">Where did you park?</h3>
 
           <div>
           
@@ -76,34 +77,33 @@
               <option value = "Manhattan">Manhattan</option>
             </select>
             <br><br>
-            Main Street:    <input type="text" name="main_st" value="<%=@main%>">  <br><br>
-            From Street:    <input type="text" name="from_st" value="<%=@from%>">  <br><br>
-            To Street:      <input type="text" name="to_st"   value="<%=@to%>">    <br><br>
-            Side of Street: <input type="text" name="side_st" value="<%=@side%>">  <br><br>
-            Phone Number:   <input type="text" name="text"    value="<%=@text%>">  <br><br>
-            Twitter:        <input type="text" name="tweet"   value="<%=@tweet%>"> <br><br>
-            <br>
+            Main Street*    <br><input type="text" name="main_st" value="<%=@main%>">  <br><br>
+            From Street*    <br><input type="text" name="from_st" value="<%=@from%>">  <br><br>
+            To Street*      <br><input type="text" name="to_st"   value="<%=@to%>">    <br><br>
+            Side of Street* <br><input type="text" name="side_st" value="<%=@side%>">  <br><br>
+            Phone Number    <br><input type="text" name="text"    value="<%=@text%>">  <br><br>
+            Twitter Handle  <br><input type="text" name="tweet"   value="<%=@tweet%>"> <br><br>
+            
+            <input type="submit" value="Submit">
             
           </div>
-      
-      <input type="submit" value="Submit">
-  </form>
+        </form>
 
 
         </section>
 
         <section class="span4">
-          <h3>Block ASP Regulations</h3>
-          <h4>North Side</h4>
-          <p> Monday and Thursday 12:00 PM to 1:30 PM</p>
+          <h3 class="col_head">Street Sweeping Regulation</h3>
+          <br>
+          <p><br><em><%=@regulation_str%></em>.</p>
           </br>
-          <h4>South Side</h4>
-          <p> Tuesday and Friday 12:00 PM to 1:30 PM</p>
+          <img id="fake-ticket" src="./img/fake-ticket.jpg" alt="Fake ticket" height="" width="auto">
+          
           <!-- <p><a class="btn" href="#">View details &raquo;</a></p> -->
        </section>
 
         <section class="span4">
-          <h3>Verify Your Block</h3>
+          <h3 class="col_head">Your Block</h3>
           <div id="map-canvas" style="height: 350px; width: 400px"></div>
           <!-- <p><a class="btn" href="#">View details &raquo;</a></p> -->
         </section>
@@ -115,7 +115,7 @@
     </section> <!-- /container -->
 
     <footer class="footer">
-        <p>&copy; Team Blue - Flatiron School, Summer 2013</p>
+        <p>&copy; Team Blue - <a href="http://flatironschool.com" target="_blank">Flatiron School</a>, Summer '13</p>
       </footer>
 
     <!-- Le javascript

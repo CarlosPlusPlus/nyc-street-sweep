@@ -9,12 +9,12 @@ module NycStreetSweep
       # Define all variables for template.
       map_gen   = false
 
-      @main  = "Default - Main St"
-      @from  = "Default - From St"
-      @to    = "Default - To St"
-      @side  = "Default - Side St"
-      @text  = "Default - Text"
-      @tweet = "Default - Tweet"
+      @main  = ""
+      @from  = ""
+      @to    = ""
+      @side  = ""
+      @text  = "optional"
+      @tweet = "optional"
 
       @map_javascript = MapGenerator.generate_js(map_gen)
 

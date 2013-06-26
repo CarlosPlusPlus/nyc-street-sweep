@@ -227,7 +227,15 @@ body {
   font-size: 14px;
   line-height: 20px;
   color: #333333;
-  background-color: #ffffff;
+  background: #fcfff4; /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover,  #fcfff4 0%, #dfe5d7 40%, #b3bead 100%); /* FF3.6+ */
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#fcfff4), color-stop(40%,#dfe5d7), color-stop(100%,#b3bead)); /* Chrome,Safari4+ */
+background: -webkit-radial-gradient(center, ellipse cover,  #fcfff4 0%,#dfe5d7 40%,#b3bead 100%); /* Chrome10+,Safari5.1+ */
+background: -o-radial-gradient(center, ellipse cover,  #fcfff4 0%,#dfe5d7 40%,#b3bead 100%); /* Opera 12+ */
+background: -ms-radial-gradient(center, ellipse cover,  #fcfff4 0%,#dfe5d7 40%,#b3bead 100%); /* IE10+ */
+background: radial-gradient(ellipse at center,  #fcfff4 0%,#dfe5d7 40%,#b3bead 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
 }
 
 a {
@@ -1026,6 +1034,7 @@ pre code {
 
 form {
   margin: 0 0 20px;
+  text-align: center
 }
 
 fieldset {
@@ -6170,7 +6179,7 @@ a.badge:focus {
   font-weight: 200;
   line-height: 15px;
   color: inherit;
-  background-color: #eeeeee;
+  background-color: #f7fbfc;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
@@ -6224,4 +6233,24 @@ a.badge:focus {
 
 .affix {
   position: fixed;
+}
+
+
+/*STUFF MATT ADDED*/
+
+.intro h3, p {
+  text-align: center;
+}
+
+.col_head {
+  text-align: center
+}
+
+#map-canvas {
+  text-align: center
+}
+
+#fake-ticket {
+  margin: auto;
+  box-shadow: -5px -5px 5px #888888;
 }
