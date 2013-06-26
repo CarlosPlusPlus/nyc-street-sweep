@@ -45,7 +45,7 @@ class MapGenerator
 
        function initialize() {
          var mapOptions = {
-           zoom: 16,
+           zoom: 17,
            center: intersection_1,
            mapTypeId: google.maps.MapTypeId.ROADMAP
          };

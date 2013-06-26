@@ -6247,10 +6247,14 @@ a.badge:focus {
 }
 
 #map-canvas {
-  text-align: center
+  text-align: center;
 }
 
 #fake-ticket {
   margin: auto;
   box-shadow: -5px -5px 5px #888888;
+}
+
+#col_padding {
+  padding-bottom: 125px;
 }

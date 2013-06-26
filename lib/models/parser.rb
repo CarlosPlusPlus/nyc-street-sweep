@@ -48,12 +48,10 @@ class Parser
 
   def self.days_of_week(reg_string) #Need to feed this a selected string from parse method
     week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    reg_days_of_week = ["", "", "", "", "", "", ""]
-    counter = 0
+    reg_days_of_week = []
 
     week.each do |x|
-      reg_days_of_week[counter] = x if reg_string.include?(x[0,2].upcase)
-      counter += 1
+      reg_days_of_week << x if reg_string.include?(x[0,2].upcase)
     end
     
     reg_days_of_week
