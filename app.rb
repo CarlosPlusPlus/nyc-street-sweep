@@ -32,6 +32,7 @@ module NycStreetSweep
 
       # Text and Tweet regulation info.
       Text.send(@text,@regulation_str)
+      Tweet.send(@tweet,@regulation_str)
 
       erb :form_test
     end
