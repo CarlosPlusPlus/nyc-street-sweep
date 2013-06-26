@@ -23,19 +23,11 @@ module NycStreetSweep
       @from = params[:from_st]
       @to   = params[:to_st]
       @side = params[:side_st]
-      
-      ######################
-      # OUR CODE GOES HERE #
-      ######################
+    
+      # Determine regulation based on template values.
+      parse_values = Parser.run_parsing(@main,@from,@to,@side)
 
-      # Geocoder -> Main St + Cross St 1
-      #          -> Main St + Cross St 2
-
-      #       Returns Array of [Lat,Long]
-
-      # Call Geocoder.rb to generate (x1,y1) to (x2,y2) lat/long.
-
-      @regulation_str = "POSTED SOURCE"
+      @regulation_str = "Street cleaning takes place between #{parse_values[0][0]} and #{parse_values[0][1]}\non #{parse_values[1]}"
 
       erb :form_test
     end

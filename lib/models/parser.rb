@@ -35,13 +35,15 @@ class Parser
       trunc << string
     end
 
-    if trunc.uniq.size == 1
-      trunc.uniq.first
-    elsif trunc.uniq.size > 1
-      puts "ERROR: THERE ARE MORE THAN ONE NON-UNIQUE REGUALATIONS FOR THIS ORD NUM"
-    else
-      puts "ERROR: PLEASE ENTER A CORRECT ADDRESS/ORD NUMBER"
-    end
+    trunc.uniq.first
+
+    # if trunc.uniq.size == 1
+    #   trunc.uniq.first
+    # elsif trunc.uniq.size > 1
+    #   puts "ERROR: THERE ARE MORE THAN ONE NON-UNIQUE REGUALATIONS FOR THIS ORD NUM"
+    # else
+    #   puts "ERROR: PLEASE ENTER A CORRECT ADDRESS/ORD NUMBER"
+    # end
   end
 
   def self.days_of_week(reg_string) #Need to feed this a selected string from parse method
@@ -62,19 +64,18 @@ class Parser
     
     time_array[0] += time_array[1][-2,2] if !time_array[0].include?("AM" || "PM")
 
-    start_time = Timeliness.parse(time_array[0], :time)
-    end_time = Timeliness.parse(time_array[1], :time)
+    start_time = Timeliness.parse(time_array[0], :time) 
+    end_time   = Timeliness.parse(time_array[1], :time)
 
-    return [start_time, end_time]
+    [start_time, end_time]
   end
 
   def self.run_parsing(main_street, from_street, to_street, side_of_street)
     
     ord_num = DB.execute("SELECT StatusOrderNumber FROM streetsegment WHERE MainStreet = ? AND FromStreet = ? AND ToStreet = ? AND SideOfStreet = ?", [main_street, from_street, to_street, side_of_street]).flatten.first
-    reg_str = self.parse(ord_num)
 
-    [self.days_of_week(reg_str),self.start_end_times(reg_str)]    
+    regulation = self.parse(ord_num)
+
+    [self.start_end_times(regulation),self.days_of_week(regulation)]    
   end
 end
-
-pp Parser.run_parsing("3 AVENUE","EAST  118 STREET","EAST  119 STREET","W")
