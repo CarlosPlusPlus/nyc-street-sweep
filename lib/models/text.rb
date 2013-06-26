@@ -26,7 +26,7 @@ class Text
     numbers_to_text = db.execute("SELECT phone, message
                           FROM text
                           WHERE date = '#{date}' AND time = '#{time}'")
-    puts
+
     numbers_to_text.each {|phone_msg| send(phone_msg.first, phone_msg.last)}
   end
 

@@ -14,18 +14,18 @@ class Tweet
     Twitter.update("@#{handle} #{message}")
   end
 
-  def self.schedule_tweet(handle, date, time)
+  def self.schedule_tweet(handle, date, time, message)
     db = SQLite3::Database.open("sweep.db")
-    db.execute("INSERT INTO tweet VALUES(?, ?, ?)",[handle, date, time])
+    db.execute("INSERT INTO tweet VALUES(?, ?, ?, ?)",[handle, date, time, message])
   end
 
-  def self.send_scheduled(date, time, message)
+  def self.send_scheduled(date, time)
     db = SQLite3::Database.open("sweep.db")
 
-    handles_to_tweet = db.execute("SELECT handle
+    handles_to_tweet = db.execute("SELECT handle, message
                           FROM tweet
-                          WHERE date = '#{date}' AND time = '#{time}'").flatten
-    handles_to_tweet.each {|handle| send(handle, message)}
+                          WHERE date = '#{date}' AND time = '#{time}'")
+    handles_to_tweet.each {|handle_msg| send(handle_msg.first, handle_msg.last)}
   end
 
 end
