@@ -15,18 +15,19 @@ class Text
                                   :body => "#{message}"})
   end
 
-  def self.schedule_text(phone, date, time)
+  def self.schedule_text(phone, date, time, message)
     db = SQLite3::Database.open("sweep.db")
-    db.execute("INSERT INTO text VALUES(?, ?, ?)",[phone, date, time])
+    db.execute("INSERT INTO text VALUES(?, ?, ?, ?)",[phone, date, time, message])
   end
 
-  def self.send_scheduled(date, time, message)
+  def self.send_scheduled(date, time)
     db = SQLite3::Database.open("sweep.db")
 
-    numbers_to_text = db.execute("SELECT phone
+    numbers_to_text = db.execute("SELECT phone, message
                           FROM text
-                          WHERE date = '#{date}' AND time = '#{time}'").flatten
-    numbers_to_text.each {|phone| send(phone, message)}
+                          WHERE date = '#{date}' AND time = '#{time}'")
+    puts
+    numbers_to_text.each {|phone_msg| send(phone_msg.first, phone_msg.last)}
   end
 
 end

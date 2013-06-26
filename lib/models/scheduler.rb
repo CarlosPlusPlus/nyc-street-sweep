@@ -1,6 +1,5 @@
 require_relative 'tweet'
 require_relative 'text'
-# require 'Time'
 
 class Scheduler
 
