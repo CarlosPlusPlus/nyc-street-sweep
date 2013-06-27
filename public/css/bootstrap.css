@@ -6238,8 +6238,12 @@ a.badge:focus {
 
 /*STUFF MATT ADDED*/
 
-.intro h3, p {
+.intro h1, p {
   text-align: center;
+}
+
+.intro h1 {
+  text-shadow: 2px 4px #aaa
 }
 
 .col_head {
@@ -6252,7 +6256,7 @@ a.badge:focus {
 
 #fake-ticket {
   margin: auto;
-  box-shadow: -5px -5px 5px #888888;
+  box-shadow: 0 -5px 5px #888888;
 }
 
 #col_padding {
@@ -6260,6 +6264,24 @@ a.badge:focus {
 }
 
 #col_padding h3 {
-  padding-top: 65px;
+  padding-top: 60px;
   text-align: center;
+  text-shadow: 3px 3px #aaa
+}
+
+#reg_string {
+ /*padding: 5px;*/
+  margin-bottom: 10px;
+  /*font-size: 16px;
+  font-weight: 200;*/
+  line-height: 27px;
+  color: inherit;
+  background-color: #f7fbfc;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px; 
+}
+
+#quote {
+  text-shadow: 1px 1px #aaa
 }

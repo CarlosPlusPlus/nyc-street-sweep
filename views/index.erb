@@ -48,7 +48,7 @@
 
       <!-- Header layout for website. -->
       <section class="intro">
-        <h3>NYC Street Sweep</h3>
+        <h1>NYC Street Sweep</h1>
         <p id="quote"><br><em>A real patriot is the fellow who gets a parking ticket and rejoices that the system works.</em><br>~Bill Vaughan~<br></p>
         <p>Sounds like none of us are real patriots... :-)</p>
       </section>
@@ -57,38 +57,38 @@
       <div class="row">
 
         <section class="span4">
-          
           <div id="col_padding">
             <h3>Where did you park?</h3>
           </div>
 
           <div>
-
             <form action="/" method="POST">
-
               <select>
                 <option value = "Manhattan">Manhattan</option>
               </select>
-              <br><br>
-              Main Street*    <br><input type="text" name="main_st" value="<%=@main%>">  <br><br>
-              From Street*    <br><input type="text" name="from_st" value="<%=@from%>">  <br><br>
-              To Street*      <br><input type="text" name="to_st"   value="<%=@to%>">    <br><br>
-              Side of Street* <br><input type="text" name="side_st" value="<%=@side%>">  <br><br>
-              Phone Number    <br><input type="text" name="text"    value="<%=@text%>">  <br><br>
-              Twitter Handle  <br><input type="text" name="tweet"   value="<%=@tweet%>"> <br><br>
-              
+              <br>
+              <label>Main Street*</label>
+                <input type="text" name="main_st" value="<%=@main%>">  <br>
+              <label>From Street*</label>
+                <input type="text" name="from_st" value="<%=@from%>">  <br>
+              <label>To Street*</label>
+                <input type="text" name="to_st"   value="<%=@to%>">    <br>
+              <label>Side of Street*</label>
+                <input type="text" name="side_st" value="<%=@side%>">  <br>
+              <label>Phone Number</label>
+                <input type="text" name="text"    value="<%=@text%>">  <br>
+              <label>Twitter Handle</label>
+                <input type="text" name="tweet"   value="<%=@tweet%>"> <br>
+              <br>
               <input type="submit" value="Submit">
-              
+            </form>
           </div>
-
-        </form>
-
         </section>
 
         <section class="span4">
-          <h3 class="col_head">Street Sweeping Regulation</h3>
+          <h3 class="col_head"></h3>
           <br>
-          <p><br><em><%=@regulation_str%></em></p>
+          <div id="reg_string"><p><br><em><%=@regulation_str%></em></p><div>
           </br>
           <img id="fake-ticket" src="./img/fake-ticket.jpg" alt="Fake ticket">
         </section>
@@ -105,8 +105,13 @@
     </section>
 
     <footer class="footer">
-        <p>&copy; Team StreetSweep - <a href="http://flatironschool.com" target="_blank">Flatiron School</a>, Summer 2013</p>
-        <p>Alicia Chang, Carlos Lazo, David Rodriguez, Matt Schmaus</p>
+        <br><p>&copy; Team StreetSweep - <a href="http://flatironschool.com" target="_blank">Flatiron School</a>, Summer 2013</p>
+        <p>
+          <a href="http://students.flatironschool.com/students/alisachang.html" target="_blank">Alicia Chang</a>, 
+          <a href="http://students.flatironschool.com/students/carloslazo.html" target="_blank">Carlos Lazo</a>, 
+          <br>
+          <a href="http://students.flatironschool.com/students/davidrodriguez.html" target="_blank">David Rodriguez</a>, 
+          <a href="http://students.flatironschool.com/students/matthewschmaus.html" target="_blank">Matt Schmaus</p></a>
       </footer>
 
     <script src="/js/jquery.js"></script>
