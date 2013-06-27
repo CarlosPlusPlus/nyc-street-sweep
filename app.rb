@@ -70,8 +70,8 @@ module NycStreetSweep
       # Text and Tweet regulation info.
       msg = "Please move your car by #{parse_values[0][0].strftime("%k:%M%p")}! #NYCStreetSweep"
 
-      Text.send(@text,msg)   if @text.length  > 0 && @text  != "optional"
-      Tweet.send(@tweet,msg) if @tweet.length > 0 && @tweet != "optional"
+      Text.send(@text,msg)   if @text.length  > 0 && @text  != "(optional)"
+      Tweet.send(@tweet,msg) if @tweet.length > 0 && @tweet != "(optional)"
 
       erb :index
     
