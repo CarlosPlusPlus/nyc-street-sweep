@@ -1,9 +1,9 @@
 require 'bundler/capistrano'
 
-set :application, "NYCStreetSweep"
-set :repository,  "https://github.com/cjlwired/nycstreetsweep?source=cc"
+set :application, "nycstreetsweep"
+set :repository,  "git@github.com:cjlwired/nycstreetsweep.git"
 
-set :user, 'gatordave'
+set :user, 'clazo'
 set :deploy_to, "/home/#{ user }/#{ application }"
 set :use_sudo, false
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
@@ -11,8 +11,8 @@ set :scm, :git # You can set :scm explicitly or Capistrano will make an intellig
 
 default_run_options[:pty] = true
 
-role :web, "198.199.80.67"                          # Your HTTP server, Apache/etc
-role :app, "198.199.80.67"                          # This may be the same as your `Web` server
+role :web, "192.241.134.249"                          # Your HTTP server, Apache/etc
+role :app, "192.241.134.249"                          # This may be the same as your `Web` server
 # role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
 # role :db,  "your slave db-server here"
 
