@@ -13,8 +13,8 @@ class Tweet
 
   # Send tweet message to provided number with a given message.
   def self.send(handle, message)
-    handle.strip!
-    handle.gsub!('@', '')
+    handle = handle.strip
+    handle = handle.gsub('@', '')
 
     Twitter.update("@#{handle} #{message}")
   end

@@ -12,10 +12,11 @@ class Text
 
   # Send text message to provided number with a given message.
   def self.send(number, message)
-    number.strip!
-    number.gsub!('-', '')
-    number.gsub!('(', '')
-    number.gsub!(')', '')
+    number = number.strip
+    number = number.gsub('-', '')
+    number = number.gsub(' ', '')
+    number = number.gsub('(', '')
+    number = number.gsub(')', '')
 
     @account.sms.messages.create({:from => '17863759963',
                                   :to => "1#{number}",
