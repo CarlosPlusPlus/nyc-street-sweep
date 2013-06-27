@@ -15,8 +15,8 @@ module NycStreetSweep
       @from  = ""
       @to    = ""
       @side  = ""
-      @text  = "optional"
-      @tweet = "optional"
+      @text  = "(optional)"
+      @tweet = "(optional)"
 
       # Setup regulation string for web page print.
       @regulation_str = "PLEASE ENTER ADDRESS INFORMATION TO SEE MATCHING REGULATION."
@@ -33,10 +33,10 @@ module NycStreetSweep
       # Define all variables for template.
       map_gen   = true
 
-      @main  = params[:main_st]
-      @from  = params[:from_st]
-      @to    = params[:to_st]
-      @side  = params[:side_st]
+      @main  = params[:main_st].upcase
+      @from  = params[:from_st].upcase
+      @to    = params[:to_st].upcase
+      @side  = params[:side_st].upcase
       @text  = params[:text]
       @tweet = params[:tweet]
     
