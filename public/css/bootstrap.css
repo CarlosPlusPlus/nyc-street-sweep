@@ -6256,5 +6256,10 @@ a.badge:focus {
 }
 
 #col_padding {
-  padding-bottom: 125px;
+  padding-bottom: 50px;
+}
+
+#col_padding h3 {
+  padding-top: 65px;
+  text-align: center;
 }
