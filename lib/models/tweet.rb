@@ -16,7 +16,7 @@ class Tweet
     handle = handle.strip
     handle = handle.gsub('@', '')
 
-    Twitter.update("@#{handle} #{message}")
+    Twitter.update(".@#{handle} #{message}")
   end
 
   # Schedule tweet for later processing.
