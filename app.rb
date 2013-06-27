@@ -70,20 +70,5 @@ module NycStreetSweep
       erb :index
     end
 
-    # Route for index.erb updates.
-    get '/test' do
-
-      @main  = "Default - Main St"
-      @from  = "Default - From St"
-      @to    = "Default - To St"
-      @side  = "Default - Side St"
-      @text  = "Default - Text"
-      @tweet = "Default - Tweet"
-
-      @regulation_str = "Your regulation will go HERE"
-
-      erb :test
-    end
-
   end
 end
