@@ -3,9 +3,9 @@ require_relative 'text'
 
 class Scheduler
 
+  # Schedule text based on alternate side parking rules.
   def self.schedule_text(asp_days, asp_times, increment, phone, message)
     daytime = DateTime.now
-
 
     while !asp_days.include?(daytime.strftime("%A"))
       daytime += 1
@@ -19,10 +19,9 @@ class Scheduler
     Text.schedule_text(phone, schedule_date, schedule_time, message)
   end
 
-
+  # Schedule tweet based on alternate side parking rules.
   def self.schedule_tweet(asp_days, asp_times, increment, handle, message)
     daytime = DateTime.now
-
 
     while !asp_days.include?(daytime.strftime("%A"))
       daytime += 1

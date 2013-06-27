@@ -2,18 +2,22 @@ require 'simple_geocoder'
 
 class MapGenerator
 
+  # Call simple_geocoder gem and return lat/long values.
   def self.location_data(location)
     SimpleGeocoder::Geocoder.new.geocode(location)
   end
 
+  # Return lat/long values of a given location.
   def self.location_lat_lng(location)
     location_data = location_data(location)
     map_hash = location_data['results'][0]['geometry']['location']
     [map_hash["lat"], map_hash["lng"]]    
   end
 
+  # Generate Javascript needed for Google map via ERB / Ruby HEREDOCS.
   def self.generate_js(map_gen,main_st="",from_st="",to_st="")
-    # Generate a static map for original index
+
+    # Generate static map when original index page is called.
     if map_gen == false
       return <<-map_str
       var map;
@@ -32,7 +36,7 @@ class MapGenerator
       google.maps.event.addDomListener(window, 'load', initialize);
       map_str
 
-    # Calculate and highlight block based on addresses.
+    # Generate polyline map when streets are provided.
     else
       xy1 = location_lat_lng("#{main_st} & #{from_st}, NYC")
       xy2 = location_lat_lng("#{main_st} & #{to_st}, NYC")
@@ -72,7 +76,6 @@ class MapGenerator
        google.maps.event.addDomListener(window, 'load', initialize);
       map_str
     end
-
   end
-
+  
 end

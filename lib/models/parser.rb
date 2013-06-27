@@ -1,13 +1,13 @@
 require 'sqlite3'
 require 'timeliness'
-require 'pp'
 
 class Parser
 
+  # Initialize connection to streetsweep database.
   DB = SQLite3::Database.open("./source/streetsweep.db")
-  # ALTSIDE = DB.execute("SELECT * FROM altside") #IS THIS NECESSARY?
 
-  def self.parse(ord_num)
+  # Parse ordinance string returned from database.
+  def self.parse_ordinance(ord_num)
     trunc = []
     
     regulation = DB.execute("SELECT SignDescription FROM altside WHERE StatusOrderNumber = ?", ord_num).flatten 
@@ -36,17 +36,10 @@ class Parser
     end
 
     trunc.uniq.first
-
-    # if trunc.uniq.size == 1
-    #   trunc.uniq.first
-    # elsif trunc.uniq.size > 1
-    #   puts "ERROR: THERE ARE MORE THAN ONE NON-UNIQUE REGUALATIONS FOR THIS ORD NUM"
-    # else
-    #   puts "ERROR: PLEASE ENTER A CORRECT ADDRESS/ORD NUMBER"
-    # end
   end
 
-  def self.days_of_week(reg_string) #Need to feed this a selected string from parse method
+  # Determine which days of the week are included in regulation.
+  def self.days_of_week(reg_string)
     week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     reg_days_of_week = []
 
@@ -57,7 +50,8 @@ class Parser
     reg_days_of_week
   end
 
-  def self.start_end_times(reg_string) #PROBLEM IF NO AM/PM EXISTS IN START TIME AND END TIME HAS DIFFERENT AM/PM
+  # Use timeliness gem to compute regulation start / end times.
+  def self.start_end_times(reg_string)
     time_array = reg_string.split(" ").first.split("-")
     
     time_array[0] += time_array[1][-2,2] if !time_array[0].include?("AM" || "PM")
@@ -68,14 +62,13 @@ class Parser
     [start_time, end_time]
   end
 
-  def self.run_parsing(main_street, from_street, to_street, side_of_street)
+  # Take in address info and return regulation info (days and times).
+  def self.parse_info(main_street, from_street, to_street, side_of_street)
     
-    ord_num = DB.execute("SELECT StatusOrderNumber FROM streetsegment WHERE MainStreet = ? AND FromStreet = ? AND ToStreet = ? AND SideOfStreet = ?", [main_street, from_street, to_street, side_of_street]).flatten.first
-
-    regulation = self.parse(ord_num)
-    # puts regulation
-    # puts regulation.class
+    ord_num    = DB.execute("SELECT StatusOrderNumber FROM streetsegment WHERE MainStreet = ? AND FromStreet = ? AND ToStreet = ? AND SideOfStreet = ?", [main_street, from_street, to_street, side_of_street]).flatten.first
+    regulation = self.parse_ordinance(ord_num)
 
     [self.start_end_times(regulation),self.days_of_week(regulation)]    
   end
+  
 end

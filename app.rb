@@ -41,7 +41,7 @@ module NycStreetSweep
       @tweet = params[:tweet]
     
       # Determine regulation based on template values.
-      parse_values = Parser.run_parsing(@main,@from,@to,@side)
+      parse_values = Parser.parse_info(@main,@from,@to,@side)
       
       days_of_week = ""
 
