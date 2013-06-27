@@ -6270,10 +6270,9 @@ a.badge:focus {
 }
 
 #reg_string {
- /*padding: 5px;*/
+ 
   margin-bottom: 10px;
-  /*font-size: 16px;
-  font-weight: 200;*/
+  text-shadow: 1px 1px #aaa;
   line-height: 27px;
   color: inherit;
   background-color: #f7fbfc;
@@ -6285,3 +6284,4 @@ a.badge:focus {
 #quote {
   text-shadow: 1px 1px #aaa
 }
+
