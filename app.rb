@@ -5,7 +5,12 @@ Bundler.require
 # Include all models in /lib/*/ folders.
 require_relative 'environment'
 
-require 'sinatra/base'
+# Use Better Errors for debugging.
+
+configure :development do
+  use BetterErrors::Middleware
+  BetterErrors.application_root = __FILE__
+end
 
 module NycStreetSweep
   class App < Sinatra::Base
