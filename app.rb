@@ -1,3 +1,8 @@
+# Require all Ruby gems located in Gemfile.
+require 'bundler'
+Bundler.require
+
+# Include all models in lib/*/ folders.
 require_relative 'environment'
 
 require 'sinatra/base'
