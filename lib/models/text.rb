@@ -1,13 +1,7 @@
-require 'twilio-ruby'
-require 'sqlite3'
-
 class Text
 
   # Setup Twilio account information.
-  account_sid = 'AC46a6a7b7c127ecf8874cdef50638d43f'
-  auth_token  = 'f1547331ba893b2f77077f6ff1388eb4'
-
-  client   = Twilio::REST::Client.new(account_sid, auth_token)
+  client   = Twilio::REST::Client.new(ENV['twilio_account_sid'], ENV['twilio_auth_token'])
   @account = client.account
 
   # Send text message to provided number with a given message.

@@ -2,10 +2,10 @@ class Tweet
 
   # Setup Twitter account information.
   Twitter.configure do |config|
-    config.consumer_key       = 'bL2CF9o4W5dfjdzzUcB4KQ'
-    config.consumer_secret    = 'qtlsmja47vi5rRRHYpA6P5l9I1kS0ArUr258u36h8'
-    config.oauth_token        = '1535446039-eQfB9oShGrespJKRJ8Pa0q9ohbfHKtALEsZxSJe'
-    config.oauth_token_secret = 'RHPC1EB4BSupSSH9Q6qw3RyOcEuEZUQnDEv2Gn8Bw'
+    config.consumer_key       = ENV['twitter_consumer_key']
+    config.consumer_secret    = ENV['twitter_consumer_secret']
+    config.oauth_token        = ENV['twitter_oauth_token']
+    config.oauth_token_secret = ENV['twitter_oauth_token_secret']
   end
 
   # Send tweet message to provided number with a given message.

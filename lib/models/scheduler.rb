@@ -1,6 +1,3 @@
-require_relative 'tweet'
-require_relative 'text'
-
 class Scheduler
 
   # Schedule text based on alternate side parking rules.
