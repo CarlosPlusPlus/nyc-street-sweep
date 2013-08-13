@@ -1,7 +1,14 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
+
 gem 'simple_geocoder'
-gem 'sqlite3'
 gem 'sinatra'
+gem 'sqlite3'
 gem 'timeliness'
 gem 'twitter'
 gem 'twilio-ruby'
+
+group :development do
+	gem 'pry-debugger'        # => debugger for project.
+	gem 'better_errors'       # => gem to display errors better for debugging
+	gem 'binding_of_caller'   # => works with better_errors to show instance variables
+end
