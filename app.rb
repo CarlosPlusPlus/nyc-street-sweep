@@ -7,10 +7,8 @@ require_relative 'environment'
 
 # Use Better Errors for debugging.
 
-configure :development do
-  use BetterErrors::Middleware
-  BetterErrors.application_root = __FILE__
-end
+use BetterErrors::Middleware
+BetterErrors.application_root = __FILE__
 
 module NycStreetSweep
   class App < Sinatra::Base
@@ -49,7 +47,7 @@ module NycStreetSweep
       @side  = params[:side_st].upcase
       @text  = params[:text]
       @tweet = params[:tweet]
-    
+
       # Determine regulation based on template values.
       parse_values = Parser.parse_info(@main,@from,@to,@side)
       

@@ -1,6 +1,3 @@
-require 'sqlite3'
-require 'timeliness'
-
 class Parser
 
   # Initialize connection to streetsweep database.

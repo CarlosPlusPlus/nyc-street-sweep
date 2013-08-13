@@ -12,7 +12,7 @@ class Text
     number = number.gsub('(', '')
     number = number.gsub(')', '')
 
-    @account.sms.messages.create({:from => '17863759963',
+    @account.sms.messages.create({:from => ENV['twilio_phone_number'],
                                   :to => "1#{number}",
                                   :body => "#{message}"})
   end
