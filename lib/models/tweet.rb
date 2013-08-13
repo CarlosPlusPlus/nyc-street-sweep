@@ -1,6 +1,3 @@
-require 'twitter'
-require 'sqlite3'
-
 class Tweet
 
   # Setup Twitter account information.

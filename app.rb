@@ -2,7 +2,7 @@
 require 'bundler'
 Bundler.require
 
-# Include all models in lib/*/ folders.
+# Include all models in /lib/*/ folders.
 require_relative 'environment'
 
 require 'sinatra/base'
